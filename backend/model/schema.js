@@ -7,13 +7,17 @@ const PostSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    desc: {
+    excerpt: {
       type: String,
       required: true,
     },
-    photo: {
+    content: {
       type: String,
-      required: false,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
     },
     categories: {
       type: String,
