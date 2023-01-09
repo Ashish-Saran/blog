@@ -13,6 +13,6 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', require('./server/router'));
+app.use('/', require('./server/router'));
 
 app.listen(3001, () => console.log('server running'));
