@@ -13,7 +13,7 @@ const Post = () => {
           corrupti?
         </p>
       </div>
-      <button>Read more</button>
+      <button className="readMoreBtn">Read more</button>
     </div>
   );
 };
