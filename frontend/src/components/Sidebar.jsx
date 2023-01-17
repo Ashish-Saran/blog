@@ -1,29 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { categories } from "../categories";
+import "../css/sidebar.css";
 
 const Sidebar = () => {
+  const [activeMenu, setActiveMenu] = useState(true);
+  const [screenSize, setScreenSize] = useState(undefined);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 800) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
+
   return (
-    <div className="sidebar">
-      <div className="sidebarItem">
-        <span className="sidebarTitle">About</span>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-          explicabo earum voluptas voluptatibus natus obcaecati hic quidem dicta
-          magnam enim laudantium iusto quisquam autem recusandae fugit repellat,
-          aut quis saepe.
-        </p>
+    <nav className="navigation">
+      <div className="navigationTitle">
+        <h1>SugarIt</h1>
       </div>
-      <div className="sidebarItem">
-        <span className="sidebarTitle">Categories</span>
-        <div className="sidebarLinks">
-          <NavLink>All</NavLink>
+      <button
+        className="menuController"
+        onClick={() => setActiveMenu(!activeMenu)}
+      >
+        <FaBars />
+      </button>
+      {activeMenu && (
+        <div className="links">
           {categories.map((cat, index) => {
             return <NavLink key={index}>{cat.name}</NavLink>;
           })}
         </div>
-      </div>
-    </div>
+      )}
+    </nav>
   );
 };
 

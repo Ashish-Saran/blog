@@ -1,14 +1,9 @@
-body {
-  background-color: #fdfbfb;
-}
-
 .App {
   text-align: center;
 }
 
 .header {
   display: flex;
-  position: sticky;
   top: 0;
   justify-content: space-between;
   padding: 0 36px;
@@ -27,22 +22,25 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.homePage {
-  display: flex;
-}
-
 .posts {
   display: flex;
-  flex: 9;
   flex-wrap: wrap;
-  margin: 20px;
+  margin: 45px;
+  width: 900px;
 }
 
 .post {
-  width: 450px;
+  width: 360px;
   margin: 0px 25px 40px 25px;
   display: flex;
   flex-direction: column;
+  border: 1px solid cornflowerblue;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.postExcerpt {
+  text-align: justify;
 }
 
 .readMoreBtn {
@@ -65,7 +63,18 @@ body {
   border: 1px solid rgb(64, 81, 234);
 }
 
-.sidebar {
+.sidebarToggle {
+  position: fixed;
+  top: 2rem;
+  right: 3rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+/* .sidebar {
   flex: 3;
   margin: 20px;
   padding-bottom: 20px;
@@ -90,11 +99,7 @@ body {
   text-decoration: none;
   letter-spacing: 3px;
   margin: 10px 0;
-}
-
-.footer > p {
-  text-align: center;
-}
+} */
 
 .navContainer {
   display: flex;
