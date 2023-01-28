@@ -1,19 +1,11 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 import Posts from "../components/Posts";
 import Sidebar from "../components/Sidebar";
 import "../css/homepage.css";
 
 const Home = () => {
-  return (
-    <div className="homePage">
-      <div className="sidebar">
-        <Sidebar />
-      </div>
-      <main className="mainSection">
-        <Posts />
-      </main>
-    </div>
-  );
+  return <Navbar />;
 };
 
 export default Home;

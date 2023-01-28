@@ -1,4 +1,4 @@
-.navigation {
+/* .navigation {
   height: 100vh;
   padding: 27px;
   background: rgba(0, 21, 41, 0.538);
@@ -13,14 +13,14 @@
 .navigationTitle > h1 {
   color: white;
   letter-spacing: 0.5rem;
-  /* background: linear-gradient(
+  background: linear-gradient(
     to right,
     rgb(64, 81, 234),
     rgba(0, 0, 255, 0.52)
-  ); */
-  /* background-clip: text;
+  );
+   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  -webkit-text-fill-color: transparent;
 }
 
 .links {
@@ -60,4 +60,8 @@
   .navigationTitle {
     align-items: center;
   }
-}
+
+  .links {
+    background: rgba(0, 21, 41, 0.538);
+  }
+} */
