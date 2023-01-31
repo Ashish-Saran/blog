@@ -5,7 +5,12 @@ import Sidebar from "../components/Sidebar";
 import "../css/homepage.css";
 
 const Home = () => {
-  return <Navbar />;
+  return (
+    <main>
+      <Navbar />
+      <Posts />
+    </main>
+  );
 };
 
 export default Home;

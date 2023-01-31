@@ -22,26 +22,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.readMoreBtn {
-  width: 150px;
-  padding: 6px;
-  background: rgb(64, 81, 234);
-  border: 1px solid rgb(64, 81, 234);
-  color: white;
-  font-size: 15px;
-  /* border: none; */
-  border-radius: 6px;
-  transition: all 0.3s linear;
-  cursor: pointer;
-  letter-spacing: 3px;
-}
-
-.readMoreBtn:hover {
-  color: black;
-  background: transparent;
-  border: 1px solid rgb(64, 81, 234);
-}
-
 .sidebarToggle {
   position: fixed;
   top: 2rem;

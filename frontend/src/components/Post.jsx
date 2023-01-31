@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../css/posts.css";
 
 const Post = () => {
@@ -14,7 +15,9 @@ const Post = () => {
           corrupti?
         </p>
       </div>
-      <button className="readMoreBtn">Read more</button>
+      <Link to="/" className="readMoreBtn">
+        Read more
+      </Link>
     </div>
   );
 };
