@@ -16,26 +16,16 @@ const Write = () => {
     const newPost = {
       title,
       excerpt,
-      category,
       content,
+      category,
+      image,
     };
-    if (image) {
-      const data = new FormData();
-      const filename = Date.now() + image.name;
-      data.append("name", filename);
-      data.append("file", image);
-      try {
-        await axios.post("localhost:3001/upload", data);
-      } catch (err) {}
-    }
-    try {
-      const res = await axios.post("localhost:3001/posts", newPost);
-    } catch (err) {}
+    await axios.post("//localhost:3001/posts", newPost);
   };
 
   return (
     <div className="write">
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data" method="post">
         <input
           type="text"
           name="title"
@@ -43,6 +33,7 @@ const Write = () => {
           autoFocus={true}
           placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
         <input
           type="text"
@@ -50,6 +41,7 @@ const Write = () => {
           id=""
           placeholder="Category"
           onChange={(e) => setCategory(e.target.value)}
+          value={category}
         />
         <textarea
           name="excerpt"
@@ -58,6 +50,7 @@ const Write = () => {
           rows="3"
           placeholder="Excerpt"
           onChange={(e) => setExcerpt(e.target.value)}
+          value={excerpt}
         ></textarea>
         <label htmlFor="uploadImage">
           Upload Image

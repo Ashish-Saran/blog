@@ -1,15 +1,12 @@
 import React from "react";
 import Post from "./Post";
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   return (
     <section className="posts">
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((post, index) => (
+        <Post key={index} post={post} />
+      ))}
     </section>
   );
 };
