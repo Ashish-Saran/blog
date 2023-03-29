@@ -1,4 +1,6 @@
 .posts {
+  position: relative;
+  top: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(338px, 1fr));
   column-gap: 2rem;

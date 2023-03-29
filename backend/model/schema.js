@@ -17,11 +17,15 @@ const PostSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
+      required: false,
     },
-    categories: {
+    category: {
       type: String,
       required: false,
+    },
+    featured: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }
