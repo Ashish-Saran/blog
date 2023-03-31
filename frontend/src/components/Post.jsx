@@ -8,9 +8,10 @@ const Post = ({ post }) => {
       <div className="postInfo">
         <span className="postTitle">{post.title}</span>
         <hr />
+        {/* <img src={post.image} alt="" /> */}
         <p className="postExcerpt">{post.excerpt}</p>
       </div>
-      <Link to="/" className="readMoreBtn">
+      <Link to={`/post/${post._id}`} className="readMoreBtn">
         Read more
       </Link>
     </div>

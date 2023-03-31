@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Write from "./pages/Write";
 import Home from "./pages/Home";
 import Sidebar from "./components/Sidebar";
+import SinglePost from "./components/SinglePost";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/post/:postId" element={<SinglePost />} />
       </Routes>
     </>
   );

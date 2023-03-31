@@ -17,6 +17,7 @@ const Home = () => {
     };
     fetchPosts();
   }, [search]);
+  console.log(posts);
   return (
     <main>
       <Navbar />

@@ -11,8 +11,8 @@ app.use(cors());
 
 require("./database")();
 
-app.use(express.json());
-
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb" }));
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 const storage = multer.diskStorage({
@@ -32,5 +32,5 @@ app.post("/upload", upload.single("image"), (req, res) => {
 
 app.use("/posts", postRoute);
 // app.use("/upload", uploadRoute);
-
-app.listen(3001, () => console.log("server running"));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log("server running"));

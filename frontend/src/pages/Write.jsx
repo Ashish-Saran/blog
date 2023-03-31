@@ -8,11 +8,36 @@ const Write = () => {
   const [category, setCategory] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const editor = useRef(null);
 
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImage(base64);
+  };
+
+  console.log(image, "base64 of pic");
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (image) {
+      await axios.post("//localhost:3001/upload", image);
+    } else {
+      return;
+    }
     const newPost = {
       title,
       excerpt,
@@ -57,11 +82,9 @@ const Write = () => {
           <input
             type="file"
             name="image"
-            id=""
+            id="uploadImage"
             accept=".jpg, .jpeg, .png"
-            onChange={(e) =>
-              setImage(window.URL.createObjectURL(e.target.files[0]))
-            }
+            onChange={handleFileUpload}
           />
         </label>
         <JoditEditor
