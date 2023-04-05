@@ -6,7 +6,9 @@ const Post = ({ post }) => {
   return (
     <div className="post">
       <div className="postInfo">
-        <span className="postTitle">{post.title}</span>
+        <span style={{ fontWeight: "bold" }} className="postTitle">
+          {post.title}
+        </span>
         <hr />
         {/* <img src={post.image} alt="" /> */}
         <p className="postExcerpt">{post.excerpt}</p>

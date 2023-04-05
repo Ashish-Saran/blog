@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import JoditEditor from "jodit-react";
 import axios from "axios";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import "../css/write.css";
 
 const Write = () => {
@@ -30,7 +32,6 @@ const Write = () => {
     setImage(base64);
   };
 
-  console.log(image, "base64 of pic");
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (image) {

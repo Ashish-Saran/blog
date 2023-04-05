@@ -7,16 +7,22 @@ import Write from "./pages/Write";
 import Home from "./pages/Home";
 import Sidebar from "./components/Sidebar";
 import SinglePost from "./components/SinglePost";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/write" element={<Write />} />
-        <Route path="/post/:postId" element={<SinglePost />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/write" element={<Write />} />
+          <Route path="/post/:id" element={<SinglePost />} />
+        </Routes>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }

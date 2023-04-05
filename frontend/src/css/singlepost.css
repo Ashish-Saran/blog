@@ -1,0 +1,16 @@
+.singlePost {
+  position: relative;
+  top: 98px;
+  margin: 0px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.excerptDiv {
+  width: 70%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: justify;
+  padding: 18px;
+}
