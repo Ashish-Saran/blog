@@ -49,6 +49,8 @@ const Write = () => {
     await axios.post("//localhost:3001/posts", newPost);
   };
 
+  console.log(category, "cat value");
+
   return (
     <div className="write">
       <form onSubmit={handleSubmit} encType="multipart/form-data" method="post">
@@ -61,14 +63,26 @@ const Write = () => {
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
-        <input
+        <label htmlFor="categories">Select Category</label>
+        <select
+          name="category"
+          onChange={(e) => setCategory(e.target.value)}
+          value={category}
+        >
+          <option value=""></option>
+          <option value="natural-sugar">Natural Sugar</option>
+          <option value="artificial-sweetener">Artificial Sweetener</option>
+          <option value="sugar-alcohol">Sugar Alcohol</option>
+          <option value="novel-sweetener">Novel Sweetener</option>
+        </select>
+        {/* <input
           type="text"
           name="category"
           id=""
           placeholder="Category"
           onChange={(e) => setCategory(e.target.value)}
           value={category}
-        />
+        /> */}
         <textarea
           name="excerpt"
           id=""
