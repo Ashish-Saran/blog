@@ -11,6 +11,7 @@ const Write = () => {
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+  const [featured, setFeatured] = useState(false);
   const editor = useRef(null);
 
   const convertToBase64 = (file) => {
@@ -44,6 +45,7 @@ const Write = () => {
       excerpt,
       content,
       category,
+      featured,
       image,
     };
     await axios.post("//localhost:3001/posts", newPost);
@@ -75,14 +77,15 @@ const Write = () => {
           <option value="sugar-alcohol">Sugar Alcohol</option>
           <option value="novel-sweetener">Novel Sweetener</option>
         </select>
-        {/* <input
-          type="text"
-          name="category"
-          id=""
-          placeholder="Category"
-          onChange={(e) => setCategory(e.target.value)}
-          value={category}
-        /> */}
+        <label htmlFor="featured">Featured</label>
+        <select
+          name="featured"
+          onChange={(e) => setFeatured(e.target.value)}
+          value={featured}
+        >
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
         <textarea
           name="excerpt"
           id=""
