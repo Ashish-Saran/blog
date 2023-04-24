@@ -37,9 +37,10 @@ const Write = () => {
     e.preventDefault();
     if (image) {
       await axios.post("//localhost:3001/upload", image);
-    } else {
-      return;
     }
+    // else {
+    //   return;
+    // }
     const newPost = {
       title,
       excerpt,
@@ -51,7 +52,9 @@ const Write = () => {
     await axios.post("//localhost:3001/posts", newPost);
   };
 
-  console.log(category, "cat value");
+  const config = {
+    uploader: { insertImageAsBase64URI: true },
+  };
 
   return (
     <div className="write">
@@ -107,6 +110,7 @@ const Write = () => {
         </label>
         <JoditEditor
           ref={editor}
+          config={config}
           value={content}
           onChange={(newContent) => setContent(newContent)}
         />

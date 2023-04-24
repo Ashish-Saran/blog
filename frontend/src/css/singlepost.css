@@ -8,9 +8,12 @@
 }
 
 .excerptDiv {
-  width: 70%;
+  width: 72%;
   font-size: 1.5rem;
   line-height: 2rem;
   text-align: justify;
   padding: 18px;
+}
+p > img {
+  border: 2px solid black;
 }

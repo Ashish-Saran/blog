@@ -2,31 +2,18 @@
   position: relative;
   top: 50px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(338px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   column-gap: 2rem;
   width: 85vw;
   padding: 3rem 0;
   margin: 0 auto;
-  /* display: flex;
-  flex-wrap: wrap;
-  margin: 45px;
-  width: 900px; */
 }
 
 .post {
   background: white;
-  display: grid;
-  grid-template-rows: auto 1fr;
   margin-bottom: 2rem;
   padding: 2rem;
   border-radius: 0.5rem;
-  /* width: 360px;
-  background: white;
-  margin: 0px 25px 40px 25px;
-  display: flex;
-  flex-direction: column;
-  padding: 18px;
-  border-radius: 6px; */
 }
 
 .postInfo > hr {
@@ -40,7 +27,7 @@
 }
 
 .readMoreBtn {
-  width: 150px;
+  display: flex;
   padding: 6px;
   background: rgb(64, 81, 234);
   border: 1px solid rgb(64, 81, 234);
@@ -50,7 +37,7 @@
   transition: all 0.2s linear;
   cursor: pointer;
   letter-spacing: 3px;
-  text-align: center;
+  justify-content: center;
 }
 
 .readMoreBtn:hover {
