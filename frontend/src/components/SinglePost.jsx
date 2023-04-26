@@ -14,7 +14,7 @@ const SinglePost = () => {
   useEffect(() => {
     const getPost = async () => {
       setLoading(true);
-      const res = await axios.get(`//localhost:3001/posts/${id}`);
+      const res = await axios.get(`//localhost:3005/posts/${id}`);
       setPost(res.data);
       setLoading(false);
     };

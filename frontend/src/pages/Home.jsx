@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Posts from "../components/Posts";
 import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
@@ -10,19 +11,38 @@ import "../css/homepage.css";
 
 const Home = () => {
   const queryClient = useQueryClient();
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [numberOfPages, setNumberOfPages] = useState(0);
   const [cat, setCat] = useState("");
   const { search } = useLocation();
 
-  const getPosts = async () => {
-    const response = await axios.get("//localhost:3001/posts");
-    return response.data;
+  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+
+  const gotoPrevious = () => {
+    setPageNumber(Math.max(0, pageNumber - 1));
   };
 
-  const { data, error, isLoading } = useQuery(["posts"], getPosts, {
-    select: (posts) => posts.filter((post) => post.category.includes(cat)),
-  });
-  console.log(data, "data");
+  const gotoNext = () => {
+    setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+  };
+
+  const fetchPosts = async () => {
+    setLoading(true);
+    const response = await fetch(`//localhost:3005/posts?page=${pageNumber}`);
+    const fetchedItems = await response.json().then(({ totalPages, posts }) => {
+      setPosts(posts);
+      setNumberOfPages(totalPages);
+      setLoading(false);
+    });
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, [pageNumber]);
+
+  console.log(posts);
 
   const handleCatSelect = (e) => {
     setCat(e.target.value);
@@ -31,12 +51,23 @@ const Home = () => {
   return (
     <main>
       <Navbar handleCatSelect={handleCatSelect} cat={cat} />
-      {isLoading ? (
+      {loading ? (
         <div className="pageLoading">
           <Loader />
         </div>
       ) : null}
-      <Posts posts={data} />
+      <Posts posts={posts} />
+      <div className="pagination">
+        <button onClick={gotoPrevious} disabled={pageNumber === 0}>
+          Previous
+        </button>
+        {pages.map((pageIndex) => (
+          <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
+            {pageIndex + 1}
+          </button>
+        ))}
+        <button onClick={gotoNext}>Next</button>
+      </div>
     </main>
   );
 };

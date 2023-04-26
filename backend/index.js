@@ -32,5 +32,5 @@ app.post("/upload", upload.single("image"), (req, res) => {
 
 app.use("/posts", postRoute);
 // app.use("/upload", uploadRoute);
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => console.log("server running"));
