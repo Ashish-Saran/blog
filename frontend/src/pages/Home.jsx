@@ -8,6 +8,7 @@ import axios from "axios";
 import { useLocation } from "react-router";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import "../css/homepage.css";
+import Pagination from "../components/Pagination";
 
 const Home = () => {
   const queryClient = useQueryClient();
@@ -57,17 +58,13 @@ const Home = () => {
         </div>
       ) : null}
       <Posts posts={posts} />
-      <div className="pagination">
-        <button onClick={gotoPrevious} disabled={pageNumber === 0}>
-          Previous
-        </button>
-        {pages.map((pageIndex) => (
-          <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
-            {pageIndex + 1}
-          </button>
-        ))}
-        <button onClick={gotoNext}>Next</button>
-      </div>
+      <Pagination
+        pageNumber={pageNumber}
+        gotoPrevious={gotoPrevious}
+        gotoNext={gotoNext}
+        pages={pages}
+        setPageNumber={setPageNumber}
+      />
     </main>
   );
 };

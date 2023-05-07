@@ -31,16 +31,16 @@ const Navbar = ({ cat, handleCatSelect }) => {
         </div>
         <div className="links-container" ref={linksContainerRef}>
           <ul className="links" ref={linksRef}>
-            {/* {links.map((link) => {
+            {links.map((link) => {
               const { id, url, text } = link;
               return (
                 <li key={id}>
                   <a href={url}>{text}</a>
                 </li>
               );
-            })} */}
+            })}
           </ul>
-          Select Category:{" "}
+          {/* Select Category:{" "}
           <select
             name="categories"
             id="categories"
@@ -52,7 +52,7 @@ const Navbar = ({ cat, handleCatSelect }) => {
             <option value="artificial-sweetener">Artificial Sweetener</option>
             <option value="novel-sweetener">Novel Sweetener</option>
             <option value="sugar-alcohol">Sugar Alcohol</option>
-          </select>
+          </select> */}
         </div>
       </div>
     </nav>
