@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "./Navbar";
+import JoditEditor from "jodit-react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../css/singlepost.css";
 import Loader from "./Loader";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const SinglePost = () => {
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(true);
+  const [content, setContent] = useState("");
   const [updating, setUpdating] = useState(false);
   const { id } = useParams();
+
+  const editor = useRef(null);
 
   useEffect(() => {
     const getPost = async () => {
@@ -20,6 +26,18 @@ const SinglePost = () => {
     };
     getPost();
   }, []);
+
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`//localhost:3005/posts/${id}`, {
+        content,
+      });
+      setUpdating(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -38,10 +56,27 @@ const SinglePost = () => {
             }}
           />
         )}
-        <div
-          className="excerptDiv"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        ></div>
+        <div className="editPost">
+          <button onClick={() => setUpdating(!updating)}>Edit Post</button>
+        </div>
+        {updating ? (
+          <JoditEditor
+            ref={editor}
+            //config={config}
+            value={post.content}
+            onChange={(newContent) => setContent(newContent)}
+          />
+        ) : (
+          <div
+            className="contentDiv"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          ></div>
+        )}
+        {updating && (
+          <button className="singlePostButton" onClick={handleUpdate}>
+            Update
+          </button>
+        )}
       </div>
     </>
   );

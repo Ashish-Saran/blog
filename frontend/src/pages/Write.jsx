@@ -36,7 +36,7 @@ const Write = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (image) {
-      await axios.post("//localhost:3001/upload", image);
+      await axios.post("//localhost:3005/upload", image);
     }
     // else {
     //   return;
@@ -49,7 +49,7 @@ const Write = () => {
       featured,
       image,
     };
-    await axios.post("//localhost:3001/posts", newPost);
+    await axios.post("//localhost:3005/posts", newPost);
   };
 
   const config = {

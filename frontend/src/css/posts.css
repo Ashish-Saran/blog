@@ -10,20 +10,28 @@
 }
 
 .post {
-  background: white;
   margin-bottom: 2rem;
   padding: 2rem;
-  border-radius: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.9rem;
 }
 
 .postInfo > hr {
   margin-top: 0.5rem;
 }
 
+.postTitle {
+  font-family: Montserrat;
+}
+
 .postExcerpt {
   text-align: justify;
   margin: 1rem 0;
   line-height: 1.8rem;
+}
+
+.postExcerpt {
+  font-family: Roboto;
 }
 
 .readMoreBtn {

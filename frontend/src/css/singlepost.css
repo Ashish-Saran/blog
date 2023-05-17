@@ -7,13 +7,22 @@
   align-items: center;
 }
 
-.excerptDiv {
-  width: 72%;
-  font-size: 1.5rem;
-  line-height: 2rem;
+.contentDiv {
+  width: 60%;
+  font-family: Roboto;
+  font-size: 1.2rem;
+  line-height: 1.38rem;
   text-align: justify;
   padding: 18px;
 }
-p > img {
-  border: 2px solid black;
+
+p {
+  line-height: 1.8rem;
+}
+
+@media only screen and (max-width: 900px) {
+  p > img {
+    max-height: 100%;
+    width: 400px;
+  }
 }
