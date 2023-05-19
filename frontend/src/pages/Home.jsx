@@ -1,70 +1,62 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Posts from "../components/Posts";
-import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
+//import Posts from "../components/Posts";
+import Sidebar from "../components/Sidebar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
-import "../css/homepage.css";
-import Pagination from "../components/Pagination";
+import "../css/posts.css";
 
 const Home = () => {
   const queryClient = useQueryClient();
-  const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const [cat, setCat] = useState("");
   const { search } = useLocation();
 
-  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
-
-  const gotoPrevious = () => {
-    setPageNumber(Math.max(0, pageNumber - 1));
-  };
-
-  const gotoNext = () => {
-    setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
-  };
-
-  const fetchPosts = async () => {
-    setLoading(true);
-    const response = await fetch(`//localhost:3005/posts?page=${pageNumber}`);
-    const fetchedItems = await response.json().then(({ totalPages, posts }) => {
-      setPosts(posts);
-      setNumberOfPages(totalPages);
-      setLoading(false);
-    });
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, [pageNumber]);
-
-  console.log(posts);
-
   const handleCatSelect = (e) => {
     setCat(e.target.value);
   };
 
+  const fetchProjects = (pageNumber = 0) =>
+    fetch(`//localhost:3005/posts?page=${pageNumber}`).then((res) =>
+      res.json()
+    );
+
+  const { isLoading, isError, error, data, isFetching, isPreviousData } =
+    useQuery({
+      queryKey: ["articles", pageNumber],
+      queryFn: () => fetchProjects(pageNumber),
+      keepPreviousData: true,
+    });
+
   return (
     <main>
       <Navbar handleCatSelect={handleCatSelect} cat={cat} />
-      {loading ? (
+      {isLoading ? (
         <div className="pageLoading">
           <Loader />
         </div>
       ) : null}
-      <Posts posts={posts} />
-      <Pagination
-        pageNumber={pageNumber}
-        gotoPrevious={gotoPrevious}
-        gotoNext={gotoNext}
-        pages={pages}
-        setPageNumber={setPageNumber}
-      />
+      <section className="posts">
+        {data?.posts.map((post, index) => (
+          <div className="post">
+            <div className="postInfo">
+              <span style={{ fontWeight: "bold" }} className="postTitle">
+                {post.title}
+              </span>
+              <hr />
+              <img src={post.image} alt="" />
+              <p className="postExcerpt">{post.excerpt}</p>
+            </div>
+            <Link to={`/post/${post._id}`} className="readMoreBtn">
+              Read more
+            </Link>
+          </div>
+        ))}
+      </section>
     </main>
   );
 };

@@ -53,3 +53,8 @@
   background: rgba(0, 0, 255);
   border: 1px solid rgb(64, 81, 234);
 }
+.pageLoading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
