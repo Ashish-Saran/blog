@@ -108,20 +108,21 @@ router.get("/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || "0";
-  const limit = 6;
-  const total = await Post.countDocuments({});
+  const limit = 4;
+  const totalItems = await Post.countDocuments({});
   let posts;
   try {
     posts = await Post.find()
       .limit(limit)
       .skip(limit * page);
     // Calculate the total number of pages
-    const totalPages = Math.ceil(total / limit);
+    const totalPages = Math.ceil(totalItems / limit);
 
     // Create the results object
     const results = {
-      posts: posts,
-      totalPages: totalPages,
+      posts,
+      totalPages,
+      totalItems,
     };
 
     res.json(results);

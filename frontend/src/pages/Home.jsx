@@ -32,6 +32,8 @@ const Home = () => {
       keepPreviousData: true,
     });
 
+  console.log(data);
+
   return (
     <main>
       <Navbar handleCatSelect={handleCatSelect} cat={cat} />
@@ -57,6 +59,23 @@ const Home = () => {
           </div>
         ))}
       </section>
+      <div className="pagination">
+        {/* <span>Current Page: {pageNumber + 1}</span> */}
+        <button
+          onClick={() => {
+            setPageNumber((old) => old + 1);
+          }}
+          disabled={pageNumber === data?.totalPages - 1}
+        >
+          Next Page
+        </button>
+        <button
+          onClick={() => setPageNumber((old) => Math.max(old - 1, 0))}
+          disabled={pageNumber === 0}
+        >
+          Previous Page
+        </button>{" "}
+      </div>
     </main>
   );
 };
