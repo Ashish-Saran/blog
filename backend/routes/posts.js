@@ -123,6 +123,7 @@ router.get("/", async (req, res) => {
       posts,
       totalPages,
       totalItems,
+      page,
     };
 
     res.json(results);

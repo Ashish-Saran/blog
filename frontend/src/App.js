@@ -21,7 +21,7 @@ function App() {
           <Route path="/write" element={<Write />} />
           <Route path="/post/:id" element={<SinglePost />} />
         </Routes>
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );

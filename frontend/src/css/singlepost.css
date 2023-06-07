@@ -11,13 +11,15 @@
   width: 60%;
   font-family: Roboto;
   font-size: 1.2rem;
-  line-height: 1.38rem;
+  /* line-height: 1.8rem; */
   text-align: justify;
   padding: 18px;
 }
 
 p {
   line-height: 1.8rem;
+  /* font-family: Roboto;
+  font-size: 1.2rem; */
 }
 
 @media only screen and (max-width: 900px) {

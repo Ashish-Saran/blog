@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Navbar from "./Navbar";
 import JoditEditor from "jodit-react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import "../css/singlepost.css";
+import { useParams, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import "../css/singlepost.css";
 
 const SinglePost = () => {
   const [post, setPost] = useState({});
@@ -19,6 +17,8 @@ const SinglePost = () => {
 
   const editor = useRef(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getPost = async () => {
       setLoading(true);
@@ -30,8 +30,6 @@ const SinglePost = () => {
     };
     getPost();
   }, []);
-
-  console.log(title);
 
   const handleUpdate = async () => {
     try {
@@ -64,6 +62,9 @@ const SinglePost = () => {
             }}
           />
         )}
+        <div className="backBTN">
+          <button onClick={() => navigate(-1)}>Back</button>
+        </div>
         <div className="editPost">
           <button onClick={() => setUpdating(!updating)}>Edit Post</button>
         </div>

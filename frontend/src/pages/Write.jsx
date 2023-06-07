@@ -110,7 +110,7 @@ const Write = () => {
         </label>
         <JoditEditor
           ref={editor}
-          config={config}
+          //config={config}
           value={content}
           onChange={(newContent) => setContent(newContent)}
         />

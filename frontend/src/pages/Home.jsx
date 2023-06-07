@@ -8,11 +8,12 @@ import axios from "axios";
 import { useLocation } from "react-router";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import "../css/posts.css";
+import Pagination from "../components/Pagination";
 
 const Home = () => {
   const queryClient = useQueryClient();
   const [pageNumber, setPageNumber] = useState(0);
-  const [numberOfPages, setNumberOfPages] = useState(0);
+  // const [numberOfPages, setNumberOfPages] = useState(0);
   const [cat, setCat] = useState("");
   const { search } = useLocation();
 
@@ -30,9 +31,13 @@ const Home = () => {
       queryKey: ["articles", pageNumber],
       queryFn: () => fetchProjects(pageNumber),
       keepPreviousData: true,
+      refetchOnWindowFocus: false,
     });
 
   console.log(data);
+
+  const numberOfPages = data?.totalPages;
+  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
 
   return (
     <main>
@@ -44,7 +49,7 @@ const Home = () => {
       ) : null}
       <section className="posts">
         {data?.posts.map((post, index) => (
-          <div className="post">
+          <div key={index} className="post">
             <div className="postInfo">
               <span style={{ fontWeight: "bold" }} className="postTitle">
                 {post.title}
@@ -59,23 +64,14 @@ const Home = () => {
           </div>
         ))}
       </section>
-      <div className="pagination">
-        {/* <span>Current Page: {pageNumber + 1}</span> */}
-        <button
-          onClick={() => {
-            setPageNumber((old) => old + 1);
-          }}
-          disabled={pageNumber === data?.totalPages - 1}
-        >
-          Next Page
-        </button>
-        <button
-          onClick={() => setPageNumber((old) => Math.max(old - 1, 0))}
-          disabled={pageNumber === 0}
-        >
-          Previous Page
-        </button>{" "}
-      </div>
+      <Pagination
+        data={data}
+        pageNumber={pageNumber}
+        pages={pages}
+        setPageNumber={setPageNumber}
+        isFetching={isFetching}
+        isPreviousData={isPreviousData}
+      />
     </main>
   );
 };
