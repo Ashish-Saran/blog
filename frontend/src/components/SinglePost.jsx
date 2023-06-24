@@ -29,7 +29,7 @@ const SinglePost = () => {
       setLoading(false);
     };
     getPost();
-  }, []);
+  }, [id]);
 
   const handleUpdate = async () => {
     try {
