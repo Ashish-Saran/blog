@@ -44,6 +44,10 @@ const SinglePost = () => {
     }
   };
 
+  const config = {
+    uploader: { insertImageAsBase64URI: true },
+  };
+
   return (
     <>
       <Navbar />
@@ -93,7 +97,7 @@ const SinglePost = () => {
         {updating ? (
           <JoditEditor
             ref={editor}
-            //config={config}
+            config={config}
             value={post.content}
             onChange={(newContent) => setContent(newContent)}
           />

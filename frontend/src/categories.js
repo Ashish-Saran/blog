@@ -1,6 +1,19 @@
 export const categories = [
-  { name: "Artificial Sweeteners" },
-  { name: "Natural Sugar" },
-  { name: "Sugar Alcohols" },
-  { name: "Novel Sweeteners" },
+  {
+    name: "Natural Sugar",
+    value: "natural-sugar",
+  },
+  {
+    name: "Artificial Sweeteners",
+    value: "artificial-sweetener",
+  },
+
+  {
+    name: "Sugar Alcohols",
+    value: "sugar-alcohol",
+  },
+  {
+    name: "Novel Sweeteners",
+    value: "novel-sweetener",
+  },
 ];

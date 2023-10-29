@@ -3,7 +3,7 @@
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
-  top: 3.6rem;
+  padding: 30px;
 }
 .page-btn {
   width: 2rem;

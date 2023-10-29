@@ -6,22 +6,21 @@ import { useLocation } from "react-router";
 import Pagination from "../components/Pagination";
 import { useGlobalContext } from "../Context";
 import "../css/posts.css";
+import Category from "../components/Category";
+import Footer from "../components/Footer";
 
 const Home = () => {
-  const [cat, setCat] = useState("");
   const { search } = useLocation();
   const {
+    cat,
     isLoading,
     data,
     isFetching,
     isPreviousData,
     pageNumber,
     setPageNumber,
+    handleCatSelect,
   } = useGlobalContext();
-
-  const handleCatSelect = (e) => {
-    setCat(e.target.value);
-  };
 
   console.log(data);
 
@@ -30,7 +29,8 @@ const Home = () => {
 
   return (
     <main>
-      <Navbar handleCatSelect={handleCatSelect} cat={cat} />
+      <Navbar />
+      <Category handleCatSelect={handleCatSelect} cat={cat} />
       {isLoading ? (
         <div className="pageLoading">
           <Loader />
@@ -61,6 +61,7 @@ const Home = () => {
         isFetching={isFetching}
         isPreviousData={isPreviousData}
       />
+      <Footer />
     </main>
   );
 };
