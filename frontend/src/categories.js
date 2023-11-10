@@ -1,5 +1,9 @@
 export const categories = [
   {
+    name: "All Articles",
+    value: "",
+  },
+  {
     name: "Natural Sugar",
     value: "natural-sugar",
   },

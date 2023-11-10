@@ -1,17 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Loader from "../components/Loader";
 import "../css/pagination.css";
+import { useGlobalContext } from "../Context";
 
-const Pagination = ({
-  data,
-  pageNumber,
-  gotoNext,
-  gotoPrevious,
-  pages,
-  setPageNumber,
-  isFetching,
-}) => {
+const Pagination = () => {
+  const { data, isFetching, pageNumber, setPageNumber } = useGlobalContext();
+
+  const numberOfPages = data?.totalPages;
+  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
   return (
     <>
       <div className="btn-container">

@@ -1,4 +1,19 @@
-.homePage {
+/* .mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageHeader,
+.pageFooter {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.pageBody {
+  flex-grow: 1;
+} */
+
+/* .homePage {
   display: flex;
 }
 
@@ -28,4 +43,4 @@
   position: absolute;
   left: 50%;
   top: 50%;
-}
+} */

@@ -1,8 +1,10 @@
 import React from "react";
 import "../css/category.css";
 import { categories } from "../categories";
+import { useGlobalContext } from "../Context";
 
-const Category = ({ cat, handleCatSelect }) => {
+const Category = () => {
+  const { cat, handleCatSelect } = useGlobalContext();
   return (
     <div className="categories">
       {categories.map((category, index) => {

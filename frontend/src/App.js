@@ -3,7 +3,6 @@ import About from "./pages/About";
 import Write from "./pages/Write";
 import Home from "./pages/Home";
 import SinglePost from "./components/SinglePost";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
   return (

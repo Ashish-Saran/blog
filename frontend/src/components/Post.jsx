@@ -10,7 +10,6 @@ const Post = ({ post }) => {
           {post.title}
         </span>
         <hr />
-        {/* <img src={post.image} alt="" /> */}
         <p className="postExcerpt">{post.excerpt}</p>
       </div>
       <Link to={`/post/${post._id}`} className="readMoreBtn">

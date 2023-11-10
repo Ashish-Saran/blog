@@ -52,9 +52,9 @@ const Write = () => {
     await axios.post("//localhost:3005/posts", newPost);
   };
 
-  const config = {
-    uploader: { insertImageAsBase64URI: true },
-  };
+  // const config = {
+  //   uploader: { insertImageAsBase64URI: true },
+  // };
 
   return (
     <div className="write">
