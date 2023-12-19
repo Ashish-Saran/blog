@@ -12,9 +12,11 @@ const AppProvider = ({ children }) => {
   };
 
   const fetchProjects = (pageNumber, cat) =>
-    fetch(`//localhost:3005/posts?page=${pageNumber}&category=${cat}`).then(
-      (res) => res.json()
-    );
+    fetch(
+      `//localhost:3005/posts?page=${pageNumber}${
+        cat !== "" ? `&category=${cat}` : ""
+      }`
+    ).then((res) => res.json());
 
   const { isLoading, isError, error, data, isFetching, isPreviousData } =
     useQuery({

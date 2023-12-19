@@ -1,6 +1,43 @@
 const router = require("express").Router();
 const Post = require("../model/schema");
 
+router.get("/", async (req, res) => {
+  const page = parseInt(req.query.page) || "0";
+  const categoryName = req.query.category;
+  const limit = 8;
+  let posts;
+  try {
+    if (categoryName) {
+      totalItems = await Post.countDocuments({ category: categoryName });
+      posts = await Post.find({
+        category: categoryName,
+      })
+        .limit(limit)
+        .skip(limit * page);
+    } else {
+      totalItems = await Post.countDocuments({});
+      posts = await Post.find()
+        .limit(limit)
+        .skip(limit * page);
+    }
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(totalItems / limit);
+    // Create the results object
+    const results = {
+      posts,
+      totalPages,
+      totalItems,
+      page,
+      categoryName,
+    };
+
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const newPost = await Post.create({ ...req.body });
@@ -75,70 +112,6 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(post);
   } catch (err) {
     res.status(500).json(err);
-  }
-});
-
-//GET ALL POSTS
-// router.get("/", async (req, res) => {
-//   const username = req.query.user;
-//   const catName = req.query.cat;
-//   const Page_Size = 3;
-//   const page = parseInt(req.query.page || "1");
-//   const total = await Post.countDocuments({});
-//   try {
-//     let posts;
-//     if (catName) {
-//       posts = await Post.find({
-//         categories: {
-//           $in: [catName],
-//         },
-//       })
-//         .limit(Page_Size)
-//         .skip(Page_Size * page);
-//     } else {
-//       posts = await Post.find()
-//         .limit(Page_Size)
-//         .skip(Page_Size * page);
-//     }
-//     res.status(200).json({ totalPages: Math.ceil(total / Page_Size), posts });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-router.get("/", async (req, res) => {
-  const page = parseInt(req.query.page) || "0";
-  const categoryName = req.query.category;
-  const limit = 6;
-  const totalItems = await Post.countDocuments({});
-  let posts;
-  try {
-    if (categoryName) {
-      posts = await Post.find({
-        category: categoryName,
-      })
-        .limit(limit)
-        .skip(limit * page);
-    } else {
-      posts = await Post.find()
-        .limit(limit)
-        .skip(limit * page);
-    }
-    // Calculate the total number of pages
-    const totalPages = Math.ceil(totalItems / limit);
-    // Create the results object
-    const results = {
-      posts,
-      totalPages,
-      totalItems,
-      page,
-      categoryName,
-    };
-
-    res.json(results);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
   }
 });
 
