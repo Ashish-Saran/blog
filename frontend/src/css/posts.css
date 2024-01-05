@@ -10,7 +10,7 @@
 
 .post {
   margin-bottom: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   border: 1px solid black;
   border-radius: 0.9rem;
 }
@@ -36,10 +36,10 @@
 .readMoreBtn {
   display: flex;
   padding: 6px;
-  background: rgb(64, 81, 234);
-  border: 1px solid rgb(64, 81, 234);
+  background: #33a9b0;
   color: white;
-  font-size: 15px;
+  border: none;
+  font-size: 18px;
   border-radius: 6px;
   transition: all 0.2s linear;
   cursor: pointer;
@@ -48,9 +48,8 @@
 }
 
 .readMoreBtn:hover {
-  color: white;
-  background: rgba(0, 0, 255);
-  border: 1px solid rgb(64, 81, 234);
+  /* background: rgba(0, 0, 255);
+  border: 1px solid rgb(64, 81, 234); */
 }
 .pageLoading {
   position: absolute;

@@ -9,6 +9,7 @@ const AppProvider = ({ children }) => {
 
   const handleCatSelect = (e) => {
     setCat(e.target.value);
+    setPageNumber(0);
   };
 
   const fetchProjects = (pageNumber, cat) =>

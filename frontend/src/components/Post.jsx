@@ -5,15 +5,15 @@ import "../css/posts.css";
 const Post = ({ post }) => {
   return (
     <div className="post">
-      {/* <div className="postInfo">
+      <div className="postInfo">
         <span style={{ fontWeight: "bold" }} className="postTitle">
           {post.title}
         </span>
         <hr />
         <p className="postExcerpt">{post.excerpt}</p>
-      </div> */}
+      </div>
       <Link to={`/post/${post._id}`} className="readMoreBtn">
-        {post.title}
+        Learn more
       </Link>
     </div>
   );

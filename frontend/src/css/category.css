@@ -10,18 +10,23 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  width: 15%;
-  height: 45px;
+  width: 250px;
+  height: 40px;
   justify-content: center;
   border-radius: 10px;
   border: none;
-  background-color: #57c4ff31;
+  background-color: white;
+  border: 2px solid #33a9b0;
   cursor: pointer;
   letter-spacing: 3px;
+  font-size: 16px;
+  font-weight: 900;
+  font-family: Roboto;
+  color: #33a9b0;
 }
 
 .activeBtn {
-  background-color: rgb(79, 79, 235);
+  background-color: #33a9b0;
   color: white;
 }
 
