@@ -8,15 +8,17 @@
 .page-btn {
   width: 2rem;
   height: 2rem;
-  background: #8bcbf9;
-  border-color: transparent;
+  /* background: #8bcbf9; */
+
   border-radius: 5px;
   cursor: pointer;
   margin: 0.5rem;
   transition: all 0.3s linear;
+  color: #33a9b0;
+  border: 2px solid #33a9b0;
 }
 .active-btn {
-  background: #063251;
+  background-color: #33a9b0;
   color: white;
 }
 .prev-btn,

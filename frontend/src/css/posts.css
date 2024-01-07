@@ -1,6 +1,4 @@
 .posts {
-  position: relative;
-  top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   column-gap: 2rem;
@@ -9,8 +7,10 @@
 }
 
 .post {
+  display: grid;
+  grid-template-rows: auto 36px;
   margin-bottom: 2rem;
-  padding: 1rem;
+  padding: 1.2rem;
   border: 1px solid black;
   border-radius: 0.9rem;
 }
