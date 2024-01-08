@@ -14,39 +14,3 @@
 .pageBody {
   flex-grow: 1;
 }
-
-/* .pagination {
-  flex-grow: -2;
-} */
-
-/* .homePage {
-  display: flex;
-}
-
-.categories {
-  position: relative;
-}
-
-@media screen and (max-width: 1000px) {
-  .homePage {
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .sidebar {
-    flex: 1;
-  }
-
-  .mainSection {
-    flex: 1;
-    margin-top: 90px;
-    margin-left: 0px;
-    margin-right: 10px;
-  }
-}
-
-.pageLoading {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-} */
