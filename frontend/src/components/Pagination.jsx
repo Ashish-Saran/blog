@@ -21,11 +21,11 @@ const Pagination = () => {
           </button>
         ))}
       </div>
-      {isFetching ? (
+      {/* {isFetching ? (
         <div className="pageLoading">
           <Loader />
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 };

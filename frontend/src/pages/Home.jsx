@@ -7,28 +7,31 @@ import Footer from "../components/Footer";
 import Posts from "../components/Posts";
 import { useGlobalContext } from "../Context";
 import "../css/homepage.css";
+import Header from "../components/Header";
 
 const Home = () => {
   const { isLoading } = useGlobalContext();
 
   return (
     <div className="mainContainer">
-      <header className="pageHeader">
-        <Navbar />
-      </header>
-      <Category />
+      <div className="pageHeader">
+        <Header />
+      </div>
       {isLoading ? (
         <div className="pageLoading">
           <Loader />
         </div>
       ) : null}
-      <main className="pageBody">
+      <div className="pageBody">
+        <Category />
         <Posts />
-      </main>
-      <Pagination />
-      <footer className="pageFooter">
+      </div>
+      <div className="pagination">
+        <Pagination />
+      </div>
+      <div className="pageFooter">
         <Footer />
-      </footer>
+      </div>
     </div>
   );
 };

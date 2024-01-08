@@ -4,11 +4,9 @@ import "../css/header.css";
 
 const Header = () => {
   return (
-    <>
-      <header className="header">
-        <Link to={"/"}>SugarIt</Link>
-      </header>
-    </>
+    <header className="header">
+      <Link to={"/"}>SugarIt</Link>
+    </header>
   );
 };
 

@@ -1,6 +1,8 @@
-/* .mainContainer {
+.mainContainer {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  height: 100vh;
 }
 
 .pageHeader,
@@ -11,6 +13,10 @@
 
 .pageBody {
   flex-grow: 1;
+}
+
+/* .pagination {
+  flex-grow: -2;
 } */
 
 /* .homePage {
