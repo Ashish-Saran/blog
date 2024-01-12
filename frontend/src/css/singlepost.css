@@ -1,29 +1,42 @@
 .singlePost {
-  position: relative;
-  top: 98px;
-  margin: 0px 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.contentDiv {
+.contentMain {
   width: 60%;
   font-family: Roboto;
   font-size: 1.2rem;
-  /* line-height: 1.8rem; */
   text-align: justify;
-  padding: 18px;
 }
 
 p {
   line-height: 2.5rem !important;
-  /* font-family: Roboto;
-  font-size: 1.2rem; */
 }
 
 .jodit-react-container {
   width: 60%;
+}
+
+.backBtn {
+  padding: 5px 10px;
+  background-color: white;
+  border: 2px solid #33a9b0;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 16px;
+  font-weight: 900;
+  font-family: Roboto;
+  color: #33a9b0;
+  transition: ease-in 0.2s;
+  margin: 20px 0px;
+}
+
+.backBtn:hover {
+  background-color: #33a9b0;
+  color: white;
 }
 
 @media only screen and (max-width: 900px) {

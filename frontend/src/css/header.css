@@ -1,12 +1,13 @@
 .header {
   display: flex;
+  align-items: center;
   justify-content: center;
   font-family: "Roboto";
   font-weight: 900;
   font-size: 45px;
   letter-spacing: 9px;
-  padding-top: 30px;
-  color: black;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 a {

@@ -5,7 +5,11 @@ const Footer = () => {
   let year = new Date().getFullYear();
   return (
     <footer className="footer">
-      <h5>&copy; {year} - SugarIt</h5>
+      <p>&copy; {year} - SugarIt</p>
+      <p>
+        The information on this site is for educational purposes only and should
+        not be considered diagnostic or medical advice.
+      </p>
     </footer>
   );
 };

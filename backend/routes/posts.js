@@ -4,7 +4,7 @@ const Post = require("../model/schema");
 router.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || "0";
   const categoryName = req.query.category;
-  const limit = 9;
+  const limit = 6;
   let posts;
   try {
     if (categoryName) {

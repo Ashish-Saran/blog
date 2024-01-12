@@ -2,11 +2,17 @@ import React from "react";
 import "../css/category.css";
 import { categories } from "../categories";
 import { useGlobalContext } from "../Context";
+import Loader from "./Loader";
 
 const Category = () => {
-  const { cat, handleCatSelect } = useGlobalContext();
+  const { cat, handleCatSelect, isFetching } = useGlobalContext();
   return (
     <div className="categories">
+      {isFetching ? (
+        <div className="pageLoading">
+          <Loader />
+        </div>
+      ) : null}
       {categories.map((category, index) => {
         return (
           <button

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import "../css/singlepost.css";
+import Header from "./Header";
 
 const SinglePost = () => {
   const [post, setPost] = useState({});
@@ -44,73 +45,61 @@ const SinglePost = () => {
     }
   };
 
-  // const config = {
-  //   uploader: { insertImageAsBase64URI: true },
-  // };
+  const config = {
+    uploader: { insertImageAsBase64URI: true },
+  };
 
   return (
     <>
-      <Navbar />
+      <Header />
       {loading ? (
         <div className="pageLoading">
           <Loader />
         </div>
       ) : null}
+
       <div className="singlePost">
-        {post.image && (
-          <img
-            src={post.image}
-            alt=""
-            style={{
-              height: "350px",
-            }}
-          />
-        )}
-        <div className="backBTN">
-          <button onClick={() => navigate(-1)}>Back</button>
-        </div>
-        <div className="editPost">
-          <button onClick={() => setUpdating(!updating)}>Edit Post</button>
-        </div>
-        {updating && (
-          <input
-            type="text"
-            name="title"
-            id=""
-            autoFocus={true}
-            placeholder="Title"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-          />
-        )}
-        {updating && (
-          <textarea
-            name="excerpt"
-            id=""
-            cols="60"
-            rows="3"
-            placeholder="Excerpt"
-            onChange={(e) => setExcerpt(e.target.value)}
-            value={excerpt}
-          ></textarea>
-        )}
+        <button onClick={() => setUpdating(!updating)}>Edit Post</button>
         {updating ? (
-          <JoditEditor
-            ref={editor}
-            // config={config}
-            value={post.content}
-            onChange={(newContent) => setContent(newContent)}
-          />
+          <div>
+            <input
+              type="text"
+              name="title"
+              id=""
+              autoFocus={true}
+              placeholder="Title"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
+            <textarea
+              name="excerpt"
+              id=""
+              cols="60"
+              rows="3"
+              placeholder="Excerpt"
+              onChange={(e) => setExcerpt(e.target.value)}
+              value={excerpt}
+            ></textarea>
+            <JoditEditor
+              ref={editor}
+              config={config}
+              value={post.content}
+              onChange={(newContent) => setContent(newContent)}
+            />
+            <button className="singlePostButton" onClick={handleUpdate}>
+              Update
+            </button>
+          </div>
         ) : (
-          <div
-            className="contentDiv"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          ></div>
-        )}
-        {updating && (
-          <button className="singlePostButton" onClick={handleUpdate}>
-            Update
-          </button>
+          <div className="contentMain">
+            <button className="backBtn" onClick={() => navigate(-1)}>
+              Back
+            </button>
+            <div
+              className="contentDiv"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            ></div>
+          </div>
         )}
       </div>
     </>
