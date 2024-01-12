@@ -34,7 +34,7 @@ const SinglePost = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`//localhost:3005/posts/${id}`, {
+      await axios.put(`//sugarit.onrender.com/posts/${id}`, {
         title,
         excerpt,
         content,
@@ -59,7 +59,7 @@ const SinglePost = () => {
       ) : null}
 
       <div className="singlePost">
-        <button onClick={() => setUpdating(!updating)}>Edit Post</button>
+        {/* <button onClick={() => setUpdating(!updating)}>Edit Post</button> */}
         {updating ? (
           <div>
             <input
