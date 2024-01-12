@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
 
   const fetchProjects = (pageNumber, cat) =>
     fetch(
-      `https://sugatitblog.onrender.com/posts?page=${pageNumber}${
+      `https://sugaritblog.onrender.com/posts?page=${pageNumber}${
         cat !== "" ? `&category=${cat}` : ""
       }`
     ).then((res) => res.json());
