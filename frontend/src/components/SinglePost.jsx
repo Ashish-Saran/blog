@@ -23,7 +23,7 @@ const SinglePost = () => {
   useEffect(() => {
     const getPost = async () => {
       setLoading(true);
-      const res = await axios.get(`//localhost:3005/posts/${id}`);
+      const res = await axios.get(`//sugarit.onrender.com/posts/${id}`);
       setPost(res.data);
       setTitle(res.data.title);
       setExcerpt(res.data.excerpt);
