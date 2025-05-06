@@ -26,9 +26,9 @@ const Home = () => {
         <Category />
         <Posts />
       </div>
-      <div className="pagination">
+      {/* <div className="pagination">
         <Pagination />
-      </div>
+      </div> */}
       <div className="pageFooter">
         <Footer />
       </div>

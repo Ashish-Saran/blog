@@ -22,12 +22,16 @@ router.get("/", async (req, res) => {
     }
     // Calculate the total number of pages
     const totalPages = Math.ceil(totalItems / limit);
+
+    const hasMore = page* limit < totalItems;
+
     // Create the results object
     const results = {
       posts,
       totalPages,
       totalItems,
       page,
+      hasMore,
       categoryName,
     };
 

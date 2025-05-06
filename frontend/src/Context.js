@@ -1,5 +1,5 @@
 import React, { useState, useContext, createContext } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 const AppContext = createContext();
 
@@ -12,31 +12,43 @@ const AppProvider = ({ children }) => {
     setPageNumber(0);
   };
 
-  const fetchProjects = (pageNumber, cat) =>
+  const fetchPosts = ({pageParam = 0}) =>
     fetch(
-      `https://sugaritblog.onrender.com/posts?page=${pageNumber}${
-        cat !== "" ? `&category=${cat}` : ""
-      }`
+      `http://localhost:3005/posts?page=${pageParam}&category=${cat}`
     ).then((res) => res.json());
 
-  const { isLoading, isError, error, data, isFetching, isPreviousData } =
-    useQuery({
-      queryKey: ["articles", pageNumber, cat],
-      queryFn: () => fetchProjects(pageNumber, cat),
-      keepPreviousData: true,
-      refetchOnWindowFocus: false,
-    });
+    const {
+      data,
+      isLoading,
+      isFetching,
+      isFetchingNextPage,
+      fetchNextPage,
+      hasNextPage,
+    } = useInfiniteQuery(
+      ["articles", cat], 
+      fetchPosts,
+      {
+        getNextPageParam: (lastPage, pages) => {
+          if(lastPage.page < lastPage.totalPages) return lastPage.page + 1;
+          return false;
+        },
+        
+        refetchOnWindowFocus: false,
+        cacheTime: 1000 * 60 * 60 * 24,
+      }
+    );
+
+    const allPosts = data?.pages?.flatMap((page) => page.posts) || []; 
 
   return (
     <AppContext.Provider
       value={{
         cat,
         isLoading,
-        isError,
-        error,
-        data,
+        fetchNextPage,
+        hasNextPage,
+        allPosts,
         isFetching,
-        isPreviousData,
         pageNumber,
         setPageNumber,
         handleCatSelect,
