@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
 
   const fetchPosts = ({pageParam = 0}) =>
     fetch(
-      `http://localhost:3005/posts?page=${pageParam}&category=${cat}`
+      `https://sugaritblog.onrender.com/posts?page=${pageParam}&category=${cat}`
     ).then((res) => res.json());
 
     const {
